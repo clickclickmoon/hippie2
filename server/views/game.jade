@@ -1,0 +1,11 @@
+script(src: "/vendor/Socket.IO/socket.io.js")
+script
+    var socket = new io.Socket(); 
+    socket.on('connect', function(){ 
+      socket.send('hi!'); 
+    }) 
+    socket.on('message', function(data){ 
+      alert(data);
+    })
+    socket.on('disconnect', function(){})
+    socket.connect()
