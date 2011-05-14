@@ -20,6 +20,12 @@ scripts = [
         'src/',
         'server/',
         true
+    ),
+    c_file( 'client',
+        'the client side scripts for the game',
+        'src/client',
+        'server/public/script',
+        true
     )
 ]
 
