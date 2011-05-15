@@ -1,0 +1,10 @@
+form(action: 'game', method: 'get')
+  fieldset
+    legend Username
+    p
+      label(for: 'user[name]') Name:
+        input(type: 'text', name: 'username')
+        .tip
+          | Enter the username you'd like to use online.
+    p
+        input(type: 'submit', value: 'join')

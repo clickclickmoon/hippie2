@@ -16,11 +16,22 @@ site.configure () ->
     site.use site.router
     site.use express.errorHandler({ dumpExceptions: true, showStack: true })
 
-site.get '/', (req, res) -> res.render 'game', {}
+site.get '/', (req, res) -> res.render 'login', {}
+site.get '/game', (req, res) ->
+    username = req.param('username', '')
+    if username is ''
+        res.redirect '/'
+    else
+        res.render 'game', { username: username }
 
 site.listen 80
 console.log 'Express! on port %s', site.address().port
 
+player_list = []
+
 socket.on 'connection', (client) ->
-    console.log "connected"
-    client.send {hello: 'world'}
+    client.on 'message', (data) ->
+        if data.cmd is 'logon'
+            console.log "#{data.username} logged in."
+            client.send { cmd: 'logon', uid: player_list.length }
+            player_list.push { name: data.username, port: client }
