@@ -1,8 +1,8 @@
 express = require 'express'
 site = express.createServer()
-io = require 'socket.io'
+#io = require 'socket.io'
 
-socket = io.listen site
+#socket = io.listen site
 
 process.on 'SIGINT', () -> process.exit(5)
 
@@ -24,14 +24,16 @@ site.get '/game', (req, res) ->
     else
         res.render 'game', { username: username }
 
-site.listen 80
+site.listen 8032
 console.log 'Express! on port %s', site.address().port
 
 player_list = []
 
+###
 socket.on 'connection', (client) ->
     client.on 'message', (data) ->
         if data.cmd is 'logon'
             console.log "#{data.username} logged in."
-            client.send { cmd: 'logon', uid: player_list.length }
+            client.send { cmd: 'logon', uid: player_list.length, pos: { x: 0, y: 0 } }
             player_list.push { name: data.username, port: client }
+###
