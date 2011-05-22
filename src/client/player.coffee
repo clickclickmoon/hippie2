@@ -12,7 +12,7 @@ class Player extends Mobject
                 when 'up'
                     @y += 10 if @y < 60000
                 when 'down'
-                    @y -= 10 if @y > 0
+                    @y -= 3 if @y > 0
         
     update: () ->
         console.log "something arst"
