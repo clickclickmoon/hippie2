@@ -1,2 +1,4 @@
 hippie2.komodoproject
-server/site.js
+server/*
+!server/vendor/*
+!server/views/*
