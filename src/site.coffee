@@ -16,13 +16,7 @@ site.configure () ->
     site.use site.router
     site.use express.errorHandler({ dumpExceptions: true, showStack: true })
 
-site.get '/', (req, res) -> res.render 'login', {}
-site.get '/game', (req, res) ->
-    username = req.param('username', '')
-    if username is ''
-        res.redirect '/'
-    else
-        res.render 'game', { username: username }
+site.get '/', (req, res) -> res.render 'game', {}
 
 site.listen 8032
 console.log 'Express! on port %s', site.address().port
