@@ -11,14 +11,16 @@ class World
         @entitys.push new Entity 0, 0
         @entitys.push new Entity 1550, 0
         @player = new Player()
-        @entitys.push @player       
+        @entitys.push @player
+        @firing = no
         
         $(document).addEvent 'keydown', (event) =>
             switch event.key
-                when 'k'
-                    console.log @scan
-                when 'space'
-                    @entitys.push new Projectile @player.x, @player.y, 0, 5
+                when 'space' then @firing = yes
+        
+        $(document).addEvent 'keyup', (event) =>
+            switch event.key
+                when 'space' then @firing = no
         
         do_draw = () => @draw()
         do_update = () => @update()
@@ -34,6 +36,7 @@ class World
         setInterval do_camera
             
     draw: () ->
+        @entitys.push new Projectile @player.x, @player.y, 0, 5 if @firing
         @context.clearRect(0, 0, @width, @height)
         e.draw(@context, @dist + @height, @scan) for e in @entitys
     
