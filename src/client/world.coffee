@@ -17,6 +17,8 @@ class World
             switch event.key
                 when 'k'
                     console.log @scan
+                when 'space'
+                    @entitys.push new Projectile @player.x, @player.y, 0, 5
         
         do_draw = () => @draw()
         do_update = () => @update()

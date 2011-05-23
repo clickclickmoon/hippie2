@@ -1,7 +1,7 @@
 
 class Player extends Mobject
     constructor: () ->
-        super(775, 0)
+        super 775, 0
         
         $(document).addEvent 'keydown', (event) =>
             switch event.key
@@ -12,9 +12,8 @@ class Player extends Mobject
                 when 'up'
                     @y += 10 if @y < 60000
                 when 'down'
-                    @y -= 3 if @y > 0
+                    @y -= 3 if @y > 0                    
         
-    update: () ->
-        console.log "something arst"
+    update: () -> true
 
 window.Player = Player
