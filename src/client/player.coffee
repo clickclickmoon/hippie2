@@ -8,6 +8,10 @@ class Player extends Mobject
         @up_down    = no
         @down_down  = no  
         
+        @hp = 80
+        @max_hp = 100
+        @soft_hp = 90
+        
         $(document).addEvent 'keydown', (event) =>
             switch event.key
                 when 'left'  then @left_down  = yes
