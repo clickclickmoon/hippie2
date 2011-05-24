@@ -1,0 +1,15 @@
+{
+map_name: "The Hippies Take Flight",
+
+width:  800,
+height: 60000,
+
+entites: [
+  { x: 140, y: 250, type: "arst"}
+]
+
+enemies: [
+
+]
+
+}
